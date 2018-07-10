@@ -1,0 +1,23 @@
+{
+    "name": "angga/lightning-mvc",
+    "description": "Hackable micro mvc boilerplate",
+    "type": "framework",
+    "require": {},
+    "autoload": {
+        "files": [
+            "core/Support/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Angga Ari Wijaya",
+            "email": "anggadarkprince@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

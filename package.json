@@ -1,0 +1,38 @@
+{
+  "name": "lightning-mvc",
+  "version": "1.0.0",
+  "description": "Simple skeleton mvc framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "prod": "cross-env NODE_ENV=production webpack",
+    "watch": "npm run dev -- --watch"
+  },
+  "keywords": [
+    "mvc",
+    "tiny",
+    "lightning",
+    "php",
+    "framework"
+  ],
+  "author": "Angga Ari Wijaya",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.6.5",
+    "bootstrap": "^4.1.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "jquery": "^3.3.1",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "popper.js": "^1.14.3",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
+  }
+}
