@@ -3,6 +3,8 @@
 namespace Core\Console;
 
 
+use Core\Console;
+
 class GeneratorCommand implements CommandInterface
 {
     private $token;
@@ -30,10 +32,10 @@ class GeneratorCommand implements CommandInterface
                     $this->generateMigration();
                     break;
                 default:
-                    echo "Option `{$option[1]}` is not defined, try run `lightning help generator`\n";
+                    Console::log("Option `{$option[1]}` is not defined, try run `lightning help generator`", 'red');
             }
         } else {
-            echo "Command `{$this->token[0]}` is not defined, try run `lightning list`\n";
+            Console::log("Command `{$this->token[0]}` is not defined, try run `lightning list`", 'red');
         }
     }
 
@@ -46,7 +48,7 @@ class GeneratorCommand implements CommandInterface
     private function writeFile($output, $content)
     {
         if (file_exists($output)) {
-            echo "File {$output} already exist!\n";
+            Console::log("File {$output} already exist!", 'red');
             exit();
         }
 
@@ -84,7 +86,7 @@ class {$className} extends Controller
 CONTROLLER;
 
         $this->writeFile($controllerFile, $content);
-        echo "Controller {$className} is generated.\n";
+        Console::log("Controller {$className} is generated.", 'green');
     }
 
     /**
@@ -117,7 +119,7 @@ class {$className} implements FilterInterface
 FILTER;
 
         $this->writeFile($controllerFile, $content);
-        echo "Filter {$className} is generated.\n";
+        Console::log("Filter {$className} is generated.", 'green');
     }
 
     /**
@@ -142,7 +144,7 @@ class {$className} extends Model
 MODEL;
 
         $this->writeFile($controllerFile, $content);
-        echo "Model {$className} is generated.\n";
+        Console::log("Model {$className} is generated.", 'green');
     }
 
     /**
@@ -199,7 +201,7 @@ class {$className} extends Migration
 MIGRATION;
 
         $this->writeFile($migrationFile, $content);
-        echo "Migration {$className} is generated.\n";
+        Console::log("Migration {$className} is generated.", 'green');
     }
 
     /**
@@ -217,6 +219,6 @@ Usage: Generate a resource class for the given name
          
 
 TOC;
-        echo $content;
+        Console::log($content);
     }
 }

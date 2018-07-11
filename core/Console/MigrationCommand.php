@@ -3,6 +3,8 @@
 namespace Core\Contract;
 
 
+use Core\Console;
+
 class MigrationCommand implements CommandInterface
 {
 
@@ -29,6 +31,6 @@ Usage: Create and run database migration
          
 
 TOC;
-        echo $content;
+        Console::log($content);
     }
 }
