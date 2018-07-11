@@ -1,4 +1,5 @@
 <?php
+
 namespace Core\Base;
 
 use Exception;
@@ -75,13 +76,13 @@ class Router
 
         if ($this->match($url)) {
             $controller = $this->params['controller'];
-            $controller = $this->convertToStudlyCaps($controller);
+            $controller = Support::toStudlyCaps($controller);
             $controller = $this->getNameSpace() . $controller . 'Controller';
 
             if (class_exists($controller)) {
                 $controllerObject = new $controller($this->params);
                 $action = $this->params['action'];
-                $action = $this->convertToCamelCase($action);
+                $action = Support::toCamelCase($action);
 
                 // because we implement __call magic method in controller, this line is always true.
                 if (is_callable([$controllerObject, $action])) {
@@ -130,32 +131,6 @@ class Router
         }
 
         return $url;
-    }
-
-    /**
-     * Change url part to StudlyCaps for class name.
-     * activity-report become ActivityReport
-     * activity become Activity
-     *
-     * @param $string
-     * @return mixed
-     */
-    protected function convertToStudlyCaps($string)
-    {
-        return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
-    }
-
-    /**
-     * Change url part to camelCase for method name.
-     * save-user become saveUser
-     * ajax-get-user become ajaxGetUser
-     *
-     * @param $string
-     * @return string
-     */
-    protected function convertToCamelCase($string)
-    {
-        return lcfirst($this->convertToStudlyCaps($string));
     }
 
     /**
